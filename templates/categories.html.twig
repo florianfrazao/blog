@@ -2,7 +2,7 @@
 {% block title %}Liste des catégories{% endblock title %}
 
 {% block main %}
-    <h1 class="page-title">Liste des catégories</h1>
+    <h1 class="page-title">{{categories | length }} catégories</h1>
     <div class="flex-container">
     {% for category in categories %}
             {% if category.published %}
