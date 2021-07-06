@@ -2,12 +2,18 @@
 {% block title %}Liste des catégories{% endblock title %}
 
 {% block main %}
-        {% for category in categories %}
+    <h1 class="page-title">Liste des catégories</h1>
+    <div class="flex-container">
+    {% for category in categories %}
             {% if category.published %}
-                    <a href="{{ path('category', {id: category.id}) }}">
-                        <h1>{{ category.title }}</h1>
-                        <p>{{ category.content }}</p>
-                    </a>
+                    <div class="card">
+                        <a href="{{ path('category', {id: category.id}) }}">
+                            <h1>{{ category.title }}</h1>
+                            <p>{{ category.desc }}</p>
+                            <div class="btn-more">En savoir plus</div>
+                        </a>
+                    </div>
             {% endif %}
         {% endfor %}
+    </div>
 {% endblock main %}

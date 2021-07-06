@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+ul li {
+    list-style: none;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    background: #AAAAAA;
+}
+
+#logo {
+    width: 100%;
+    height: auto;
+    padding: 0 40px;
+}
+
+#logo img {
+    width: 200px;
+}
+
+nav {
+    padding: 0 40px;
+}
+
+nav ul li a {
+    font-size: 1.3em;
+    color: black;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.page-title {
+    margin: 30px 0 0 0;
+    text-align: center;
+}
+
+.card {
+    width: 25%;
+    margin: 40px;
+    padding: 40px;
+    border: 2px solid black;
+}
+
+.category {
+    margin: 40px;
+    padding: 40px;
+}
+
+.card h1, p, .category h1, p{
+    margin:0 0 10px 0;
+}
+
+.btn-more{
+    background: black;
+    color:white;
+    margin: 15px 0;
+    padding:5px 15px;
+    border-radius:15px;
+    text-align: center;
+    display: inline-block;
+}
+
+footer {
+    height: 10vh;
+    background: black;
+}
