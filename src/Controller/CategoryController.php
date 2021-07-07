@@ -37,22 +37,22 @@ class CategoryController extends AbstractController
     ];
 
     /**
-     * @Route("categories", name="categories")
+     * @Route("/categories", name="categoryList")
      */
-    public function categories()
+    public function categoryList()
     {
         $categories = $this->categories;
-        return $this->render('categories.html.twig', ['categories' => $categories]);
+        return $this->render('category_list.html.twig', ['categories' => $categories]);
 
     }
 
     /**
-     * @Route("category/{id}", name="category")
+     * @Route("category/{id}", name="categoryShow")
      */
-    public function category($id)
+    public function categoryShow($id)
     {
         $category = $this->categories{$id};
-        return $this->render('category.html.twig', ['category' => $category]);
+        return $this->render('category_show.html.twig', ['category' => $category]);
 
     }
 

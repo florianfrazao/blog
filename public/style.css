@@ -26,7 +26,7 @@ header {
 }
 
 #logo {
-    width: 85%;
+    width: 80%;
     height: auto;
     padding: 0 40px;
 }
@@ -64,7 +64,7 @@ nav ul li a {
     border: 2px solid black;
 }
 
-.category {
+.category, .article {
     margin: 40px;
     padding: 40px;
 }

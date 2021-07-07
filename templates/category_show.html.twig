@@ -2,6 +2,14 @@
 
 {% block title %} {{ category.title}} {% endblock title %}
 
+{% block nav %}
+    <nav>
+        <ul>
+            <li><a href="{{ path('categoryList') }}">Liste des catégories</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
 {% block main %}
     <div class="category">
         <h1>{{ category.title }}</h1>

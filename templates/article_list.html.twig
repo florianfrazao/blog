@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock title %}
+
+{% block nav %}
+    <nav>
+        <ul>
+            <li><a href="{{ path('articleList') }}">Liste des articles</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <h1 class="page-title">{{articles | length }} articles</h1>
+    <div class="flex-container">
+        {% for article in articles %}
+            {% if article.isPublished %}
+                <div class="card">
+                    <a href="{{ path('articleShow', {id: article.id}) }}">
+                        <h1>{{ article.title }}</h1>
+                        <p>{{ article.description }}</p>
+                        <div class="btn-more">En savoir plus</div>
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock main %}

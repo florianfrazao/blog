@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Liste des catégories{% endblock title %}
+
+{% block nav %}
+    <nav>
+        <ul>
+            <li><a href="{{ path('categoryList') }}">Liste des catégories</a></li>
+        </ul>
+    </nav>
+{% endblock %}
 
 {% block main %}
     <h1 class="page-title">{{categories | length }} catégories</h1>
@@ -7,7 +16,7 @@
     {% for category in categories %}
             {% if category.published %}
                     <div class="card">
-                        <a href="{{ path('category', {id: category.id}) }}">
+                        <a href="{{ path('categoryShow', {id: category.id}) }}">
                             <h1>{{ category.title }}</h1>
                             <p>{{ category.desc }}</p>
                             <div class="btn-more">En savoir plus</div>
