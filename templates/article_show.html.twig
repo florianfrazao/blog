@@ -2,16 +2,8 @@
 
 {% block title %} {{ article.title}} {% endblock title %}
 
-{% block nav %}
-    <nav>
-        <ul>
-            <li><a href="{{ path('articleList') }}">Liste des articles</a></li>
-        </ul>
-    </nav>
-{% endblock %}
-
 {% block main %}
-    <div class="article">
+    <div class="article-show">
         <h1>{{ article.title }}</h1>
         <p>{{ article.description }}</p>
         <p>{{ article.content }}</p>

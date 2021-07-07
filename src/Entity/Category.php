@@ -32,6 +32,11 @@ class Category
         return $this->id;
     }
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPublished;
+
     public function getTitle(): ?string
     {
         return $this->title;
@@ -55,4 +60,16 @@ class Category
 
         return $this;
     }
+
+    public function getIsPublished()
+    {
+        return $this->isPublished;
+    }
+
+    public function setIsPublished($isPublished): void
+    {
+        $this->isPublished = $isPublished;
+    }
+
+
 }

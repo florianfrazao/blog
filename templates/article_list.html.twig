@@ -2,16 +2,9 @@
 
 {% block title %}Liste des articles{% endblock title %}
 
-{% block nav %}
-    <nav>
-        <ul>
-            <li><a href="{{ path('articleList') }}">Liste des articles</a></li>
-        </ul>
-    </nav>
-{% endblock %}
-
 {% block main %}
-    <h1 class="page-title">{{articles | length }} articles</h1>
+    <h1 class="page-title">Liste des articles</h1>
+    <h2 class="subtitle">({{articles | length }} articles)</h2>
     <div class="flex-container">
         {% for article in articles %}
             {% if article.isPublished %}

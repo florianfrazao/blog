@@ -13,10 +13,6 @@ a {
     color: black;
 }
 
-ul li {
-    list-style: none;
-}
-
 header {
     display: flex;
     align-items: center;
@@ -39,6 +35,17 @@ nav {
     padding: 0 40px;
 }
 
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 5px;
+}
+
 nav ul li a {
     font-size: 1.3em;
     color: black;
@@ -46,31 +53,36 @@ nav ul li a {
 
 .flex-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     margin:40px;
 }
 
 .page-title {
-    margin: 30px 0 0 0;
+    margin: 20px 0;
     text-align: center;
+}
+
+.subtitle {
+    margin: 10px 0;
+    text-align: center;
+    font-style: italic;
 }
 
 .card {
     width: 40%;
     padding: 40px;
-    margin: 40px;
+    margin: 40px 0;
     border: 2px solid black;
 }
 
-.category, .article {
-    margin: 40px;
-    padding: 40px;
+.category-show, .article-show {
+    margin: 80px;
 }
 
-.card h1, p, .category h1, p{
-    margin:0 0 10px 0;
+.category-show h1, p .article-show h1, p{
+    margin:10px 0;
 }
 
 .btn-more{
@@ -86,4 +98,19 @@ nav ul li a {
 footer {
     height: 10vh;
     background: black;
+}
+
+@media (max-width: 800px) {
+
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 80%;
+        padding: 40px;
+        margin:40px 0;
+        border: 2px solid black;
+    }
+
 }

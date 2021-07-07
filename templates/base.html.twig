@@ -10,7 +10,13 @@
             <div id="logo">
                 <img src="{{ asset('img/logo.png') }}" alt="logo">
             </div>
-            {% block nav %}{% endblock %}
+            <nav>
+                <ul>
+                    <li><a href="{{ path('categoryList') }}">Catégories</a></li>
+                    <li><a href="{{ path('articleList') }}">Articles</a></li>
+
+                </ul>
+            </nav>
         </header>
         <main>
             {% block main %}{% endblock %}
