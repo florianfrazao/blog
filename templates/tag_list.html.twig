@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des tags{% endblock title %}
+
+{% block main %}
+    <h1 class="page-title">Liste des tags</h1>
+    <h2 class="subtitle">({{tags | length }} tags)</h2>
+    <div class="flex-container">
+        {% for tag in tags %}
+            <a href="{{ path('tagShow', {id: tag.id}) }}"
+               class="tag" style="border:2px solid {{ tag.color }}; color: {{ tag.color }};">{{ tag.title }}</a>
+        {% endfor %}
+    </div>
+{% endblock main %}

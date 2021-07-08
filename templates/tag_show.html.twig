@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ tag.title}} {% endblock title %}
+
+{% block main %}
+    <div class="list-items">
+        {% if tag.id IS NOT NULL %}
+        <a href="{{ path('tagShow', {id: tag.id}) }}"
+           class="tag" style="border:2px solid {{ tag.color }}; color: {{ tag.color }};">{{ tag.title }}</a>
+        {% endif %}
+    </div>
+{% endblock main %}
