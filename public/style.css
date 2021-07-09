@@ -7,6 +7,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+*:focus {
+    outline: none;
+}
+
 a {
     text-decoration: none;
     font-weight: bold;
@@ -23,6 +27,25 @@ header {
 
 #logo {
     padding: 0 0 0 40px;
+}
+
+
+#search input[type='text'] {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-style: italic;
+    margin: 0 10px 0 0;
+}
+
+#search input[type='submit']{
+    background: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 nav {

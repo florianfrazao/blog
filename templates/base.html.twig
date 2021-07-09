@@ -10,6 +10,10 @@
             <div id="logo">
                 <h1><a href="{{ path('home') }}">Mon super blog</a></h1>
             </div>
+            <form id="search" action="{{ path('search') }}" method="get">
+                <input type="text" name="result" placeholder="recherche...">
+                <input type="submit" value="Rechercher">
+            </form>
             <nav>
                 <ul>
                     <li><a href="{{ path('categoryList') }}">Catégories</a></li>

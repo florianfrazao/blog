@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ArticleController extends AbstractController
@@ -49,14 +50,14 @@ class ArticleController extends AbstractController
     /**
      * @Route("/search", name="search")
      */
-    public function search(ArticleRepository $articleRepository)
+    public function search(ArticleRepository $articleRepository, Request $request)
     {
-        $term = 'lorem';
-        $articles = $articleRepository->searchByTerm($term);
+        $search = $request->query->get('result');
+        $articles = $articleRepository->searchByTerm($search);
 
         return $this->render('article_search.html.twig', [
             'articles' => $articles,
-            'term' => $term
+            'search' => $search
         ]);
     }
 }
