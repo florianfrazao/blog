@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des articles{% endblock title %}
+{% block title %}Recherche{% endblock title %}
 
 {% block main %}
     <div class="list-items">
-        <h1 class="page-title">Liste des articles</h1>
-        <h2 class="subtitle">({{ articles | length }} article{{ articles | length > 1 ? 's' : '' }})</h2>
+        <h1 class="page-title">Résultat : {{ articles | length }} article{{ articles | length > 1 ? 's' : '' }} correspondant à "{{ term }}"</h1>
         <div class="flex-container">
             {% for article in articles %}
                 {% if article.isPublished %}

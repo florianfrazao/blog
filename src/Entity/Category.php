@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Category
 {
+
+    // Entités de la table category
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -27,15 +30,26 @@ class Category
      */
     private $description;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     /**
      * @ORM\Column(type="boolean")
      */
     private $isPublished;
+
+
+    // Jointure avec la table articles en utilisant Doctrine
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="category")
+     */
+    private $articles;
+
+
+    // Getters and Setters
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getTitle(): ?string
     {
@@ -70,6 +84,17 @@ class Category
     {
         $this->isPublished = $isPublished;
     }
+
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    public function setArticles($articles): void
+    {
+        $this->articles = $articles;
+    }
+
 
 
 }

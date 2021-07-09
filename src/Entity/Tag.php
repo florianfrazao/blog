@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tag
 {
+
+    // Entités de la table category
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -26,6 +29,18 @@ class Tag
      * @ORM\Column(type="string", length=255)
      */
     private $color;
+
+
+    // Jointure avec la table articles en utilisant Doctrine
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="tag")
+     */
+    private $articles;
+
+
+
+    // Getters and Setters
 
     public function getId(): ?int
     {
@@ -55,4 +70,16 @@ class Tag
 
         return $this;
     }
+
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    public function setArticles($articles): void
+    {
+        $this->articles = $articles;
+    }
+
+
 }

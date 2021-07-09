@@ -3,19 +3,22 @@
 {% block title %}Liste des catégories{% endblock title %}
 
 {% block main %}
-    <h1 class="page-title">Liste des catégories</h1>
-    <h2 class="subtitle">({{categories | length }} catégories)</h2>
-
-    <div class="flex-container">
-    {% for category in categories %}
-            {% if category.isPublished %}
+    <div class="list-items">
+        <h1 class="page-title">Liste des catégories</h1>
+        <h2 class="subtitle">({{ categories | length }} catégorie{{ categories | length > 1 ? 's' : '' }})</h2>
+        <div class="flex-container">
+            {% for category in categories %}
+                {% if category.isPublished %}
                     <div class="card">
+                        <h1 class="title">{{ category.title }}</h1>
+                        <p class="description">{{ category.description }}</p>
                         <a href="{{ path('categoryShow', {id: category.id}) }}">
-                            <h1>{{ category.title }}</h1>
-                            <p>{{ category.description }}</p>
+                            <h3 class="title">{{ category.articles | length }} article{{ category.articles | length > 1 ? 's' : '' }} </h3>
+                            <div class="btn-more">Voir tous les articles</div>
                         </a>
                     </div>
-            {% endif %}
-        {% endfor %}
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock main %}

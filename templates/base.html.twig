@@ -8,13 +8,13 @@
     <body>
         <header>
             <div id="logo">
-                <img src="{{ asset('img/logo.png') }}" alt="logo">
+                <h1><a href="{{ path('home') }}">Mon super blog</a></h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="{{ path('tagList') }}">Tags</a></li>
                     <li><a href="{{ path('categoryList') }}">Catégories</a></li>
                     <li><a href="{{ path('articleList') }}">Articles</a></li>
+                    <li><a href="{{ path('tagList') }}">Tags</a></li>
 
                 </ul>
             </nav>
@@ -23,6 +23,7 @@
             {% block main %}{% endblock %}
         </main>
         <footer>
+            <h3>Crée avec Symfony par Florian Frazao</h3>
         </footer>
     </body>
 </html>

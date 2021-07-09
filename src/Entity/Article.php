@@ -10,6 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Article
 {
+
+    // Entités de la table article
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -36,6 +39,22 @@ class Article
      * @ORM\Column(type="boolean")
      */
     private $isPublished;
+
+
+    // Jointure avec la table category et la table tag en utilisant Doctrine
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tag", inversedBy="articles")
+     */
+    private $tag;
+
+
+    // Getters and setters
 
     public function getId(): ?int
     {
@@ -89,4 +108,26 @@ class Article
 
         return $this;
     }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
+
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    public function setTag($tag): void
+    {
+        $this->tag = $tag;
+    }
+
+
 }

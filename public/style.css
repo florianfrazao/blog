@@ -16,23 +16,17 @@ a {
 header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 10vh;
     background: #AAAAAA;
 }
 
 #logo {
-    width: 80%;
-    height: auto;
-    padding: 0 40px;
-}
-
-#logo img {
-    width: 200px;
+    padding: 0 0 0 40px;
 }
 
 nav {
-    padding: 0 40px;
+    padding: 0 40px 0 0;
 }
 
 nav ul {
@@ -51,29 +45,90 @@ nav ul li a {
     color: black;
 }
 
+a:hover{
+    text-decoration: underline;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.mx-5 {
+    margin: 0 5px;
+}
+
+.mx-10 {
+    margin: 0 10px;
+}
+
+.my-5 {
+    margin: 5px 0;
+}
+
+.my-10 {
+    margin: 10px 0;
+}
+
+.m-5 {
+    margin: 5px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+
+.flex-start {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-end {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.flex-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .flex-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    margin:40px;
 }
 
 .page-title {
     margin: 20px 0;
-    text-align: center;
+    color: #000000;
 }
 
 .subtitle {
     margin: 10px 0;
-    text-align: center;
-    font-style: italic;
+    color: #AAAAAA;
 }
 
 .card {
     width: 40%;
     padding: 40px;
-    margin: 40px 0;
+    margin: 40px 40px 40px 0;
     border: 2px solid black;
 }
 
@@ -81,18 +136,33 @@ nav ul li a {
     margin: 80px;
 }
 
-.list-items h1, p {
-    margin:10px 0;
+.title {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.description {
+    font-style: italic;
+    font-weight:bold;
+    margin: 10px 0;
+}
+
+.content {
+    margin: 10px 0;
 }
 
 .btn-more{
     background: black;
     color:white;
-    margin: 15px 0;
+    margin: 10px 0;
     padding:5px 15px;
     border-radius:15px;
     text-align: center;
     display: inline-block;
+}
+
+.tags {
+    margin: 40px 0;
 }
 
 .tag {
@@ -101,15 +171,18 @@ nav ul li a {
     padding: 5px 10px;
 }
 
-.tag:hover {
-    transform: scale(1.2);
-    transition: 0.3s ease;
-}
-
 footer {
     height: 10vh;
     background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+footer h3 {
+    color: white;
+}
+
 
 @media (max-width: 800px) {
 
@@ -122,6 +195,10 @@ footer {
         padding: 40px;
         margin:40px 0;
         border: 2px solid black;
+    }
+
+    #logo h1 {
+        font-size: 1.1em;
     }
 
     .tag {

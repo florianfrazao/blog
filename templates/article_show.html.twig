@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ article.title}} {% endblock title %}
+{% block title %} {{ article.title }} {% endblock title %}
 
 {% block main %}
     <div class="list-items">
-        <h1>{{ article.title }}</h1>
-        <p>{{ article.description }}</p>
-        <p>{{ article.content }}</p>
+        <h1 class="title">{{ article.title }}</h1>
+        <h2 class="title">{{ article.category.title }}</h2>
+        <a href="{{ path('tagShow', {id: article.tag.id}) }}" class="tag my-10"
+           style="border:2px solid {{ article.tag.color }}; color: {{ article.tag.color }};">{{ article.tag.title }}</a>
+        <p class="description">{{ article.description }}</p>
+        <p class="content">{{ article.content }}</p>
     </div>
 {% endblock main %}
