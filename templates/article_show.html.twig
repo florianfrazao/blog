@@ -5,9 +5,13 @@
 {% block main %}
     <div class="list-items">
         <h1 class="title">{{ article.title }}</h1>
-        <h2 class="title">{{ article.category.title }}</h2>
+        {% if article.category %}
+             <h2 class="title">{{ article.category.title }}</h2>
+        {% endif %}
+        {% if article.tag %}
         <a href="{{ path('tagShow', {id: article.tag.id}) }}" class="tag my-10"
            style="border:2px solid {{ article.tag.color }}; color: {{ article.tag.color }};">{{ article.tag.title }}</a>
+        {% endif %}
         <p class="description">{{ article.description }}</p>
         <p class="content">{{ article.content }}</p>
     </div>

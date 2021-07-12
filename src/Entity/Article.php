@@ -31,6 +31,11 @@ class Article
     private $description;
 
     /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $content;
@@ -41,7 +46,8 @@ class Article
     private $isPublished;
 
 
-    // Jointure avec la table category et la table tag en utilisant Doctrine
+    // Permet de lier l'entity Category grâce à la méthode ManyToOne
+    // (Ne pas oublier de générer les getters et setters)
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
@@ -83,6 +89,16 @@ class Article
         $this->description = $description;
 
         return $this;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt($createdAt): void
+    {
+        $this->createdAt = $createdAt;
     }
 
     public function getContent(): ?string
@@ -128,6 +144,5 @@ class Article
     {
         $this->tag = $tag;
     }
-
 
 }

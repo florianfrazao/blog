@@ -9,7 +9,7 @@
         <div class="flex-start">
             <div class="tags">
                 {% for tag in tags %}
-                    <a href="{{ path('tagShow', {id: tag.id}) }}" class="tag mx-10"
+                    <a href="{{ path('tagShow', {id: tag.id}) }}" class="tag mx-r-10"
                        style="border:2px solid {{ tag.color }}; color: {{ tag.color }};">{{ tag.title }}</a>
                 {% endfor %}
             </div>

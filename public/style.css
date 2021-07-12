@@ -84,6 +84,22 @@ a:hover{
     margin: 0 10px;
 }
 
+.mx-r-5 {
+    margin: 0 5px 0 0;
+}
+
+.mx-r-10 {
+    margin: 0 10px 0 0;
+}
+
+.mx-l-5 {
+    margin: 0 0 0 5px;
+}
+
+.mx-l-10 {
+    margin: 0 0 0 10px;
+}
+
 .my-5 {
     margin: 5px 0;
 }

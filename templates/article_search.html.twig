@@ -4,7 +4,7 @@
 
 {% block main %}
     <div class="list-items">
-        <h1 class="page-title">Résultat : {{ articles | length }} article{{ articles | length > 1 ? 's' : '' }} correspondant à "{{ search }}"</h1>
+        <h1 class="page-title">Résultat : {{ articles | length }} article{{ articles | length > 1 ? 's' : '' }} correspondant à "{{ term }}"</h1>
         <div class="flex-container">
             {% for article in articles %}
                 {% if article.isPublished %}

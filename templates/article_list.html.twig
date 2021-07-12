@@ -11,9 +11,13 @@
                 {% if article.isPublished %}
                     <div class="card">
                         <h1 class="title">{{ article.title }}</h1>
-                        <h2 class="title">{{ article.category.title }}</h2>
-                        <a href="{{ path('tagShow', {id: article.tag.id}) }}" class="tag"
+                        {% if article.category %}
+                            <h2 class="title">{{ article.category.title }}</h2>
+                        {% endif %}
+                        {% if article.tag %}
+                            <a href="{{ path('tagShow', {id: article.tag.id}) }}" class="tag"
                            style="border:2px solid {{ article.tag.color }}; color: {{ article.tag.color }};">{{ article.tag.title }}</a>
+                        {% endif %}
                         <p class="description">{{ article.description }}</p>
                         <a href="{{ path('articleShow', {id: article.id}) }}">
                             <div class="btn-more">En savoir plus</div>
