@@ -1,0 +1,47 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Accueil{% endblock title %}
+
+{% block main %}
+<div class="show">
+    <h1 class="page-title text-center">Administration des articles</h1>
+    <h2 class="subtitle my-10 text-center">({{ articles | length }} article{{ articles | length > 1 ? 's' : '' }})</h2>
+    <div class="add-button my-10">
+        <span class="material-icons">add_circle</span>
+        <a href="{{ path('AdminArticleAdd')}}">Ajouter un article</a>
+    </div>
+        <table id="article-array" class="admin-array my-20" cellspacing="0">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Catégorie</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                    {% if article.isPublished %}
+                        <tr>
+                            <td>{{ article.id }}</td>
+                            <td>{{ article.title }}</td>
+                            <td>{{ article.category.title }}</td>
+                            <td>{{ article.createdAt | date('j-m-y')}}</td>
+                            <td>{{ article.description }}</td>
+                            <td>
+                                <a href="{{ path('AdminArticleUpdate', {'id': article.id }) }}">
+                                    <span class="material-icons">edit</span>
+                                </a>
+                                <a href="{{ path('AdminArticleDelete', {'id': article.id }) }}">
+                                    <span class="material-icons">delete</span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock main %}

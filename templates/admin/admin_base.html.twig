@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ asset('style.css') }}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+<header>
+  <div id="logo-admin">
+    <h1><a href="{{ path('Admin') }}">Administration</a></h1>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="{{ path('AdminCategoryList') }}">
+          <span class="material-icons">layers</span>Catégories
+        </a>
+      </li>
+      <li><a href="{{ path('AdminArticleList') }}">
+          <span class="material-icons">description</span>Articles
+        </a>
+      </li>
+      <li><a href="{{ path('AdminTagList')}}">
+          <span class="material-icons">local_offer</span>Tags
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+  {% block main %}{% endblock %}
+</main>
+<footer>
+  <h3>Crée avec Symfony par Florian Frazao</h3>
+</footer>
+</body>
+</html>
