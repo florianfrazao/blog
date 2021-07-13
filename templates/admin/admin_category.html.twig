@@ -1,6 +1,6 @@
 {% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}Admin Catégories{% endblock title %}
+{% block title %}Administration | Catégories{% endblock title %}
 
 {% block main %}
 <div class="show">
@@ -27,13 +27,13 @@
                             <td>{{ category.id }}</td>
                             <td>{{ category.title }}</td>
                             <td>{{ category.description }}</td>
-                            <td>{{ category.articles | length }} article{{ category.articles | length > 1 ? 's' : '' }}</td>
+                            <td>{{ category.articles | length }}</td>
                             <td>
                                 <a href="{{ path('AdminCategoryUpdate', {'id': category.id }) }}">
-                                    <span class="material-icons">edit</span>
+                                    <span class="material-icons" id="edit-icon">edit</span>
                                 </a>
                                 <a href="{{ path('AdminCategoryDelete', {'id': category.id }) }}">
-                                    <span class="material-icons">delete</span>
+                                    <span class="material-icons" id="delete-icon">delete</span>
                                 </a>
                             </td>
                         </tr>

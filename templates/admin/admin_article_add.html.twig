@@ -1,0 +1,10 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration | Ajout d'un article{% endblock title %}
+
+{% block main %}
+<div class="show">
+    <h1 class="page-title text-center">Ajout d'un nouvel article</h1>
+    {{ form(articleForm) }}
+</div>
+{% endblock main %}

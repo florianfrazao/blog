@@ -3,16 +3,16 @@
 {% block title %} {{ tag.title }} {% endblock title %}
 
 {% block main %}
-    <div class="list-items">
-        <h1 class="page-title">Liste des articles avec le tag <span style="color:{{ tag.color }}">"{{ tag.title }}"</h1>
-        <h2 class="subtitle">({{ tag.articles | length }} article{{ tag.articles | length > 1 ? 's' : '' }})</h2>
+    <div class="show">
+        <h1 class="page-title text-center">Liste des articles avec le tag <span style="color:{{ tag.color }}">"{{ tag.title }}"</h1>
+        <h2 class="subtitle my-10 text-center">({{ tag.articles | length }} article{{ tag.articles | length > 1 ? 's' : '' }})</h2>
         <div class="flex-container">
             {% for article in tag.articles %}
                 <div class="card">
                     <h1 class="title">{{ article.title }}</h1>
-                    <p class="description">{{ article.description }}</p>
+                    <p class="description my-10">{{ article.description }}</p>
                     <a href="{{ path('articleShow', {id: article.id}) }}">
-                        <div class="btn-more">En savoir plus</div>
+                        <div class="btn-more my-10">Voir l'article</div>
                     </a>
                 </div>
             {% endfor %}

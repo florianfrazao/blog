@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('style.css') }}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
         <header>
@@ -16,10 +17,22 @@
             </form>
             <nav>
                 <ul>
-                    <li><a href="{{ path('categoryList') }}">Catégories</a></li>
-                    <li><a href="{{ path('articleList') }}">Articles</a></li>
-                    <li><a href="{{ path('tagList') }}">Tags</a></li>
-
+                    <li><a href="{{ path('categoryList') }}">
+                            <span class="material-icons">layers</span>Catégories
+                        </a>
+                    </li>
+                    <li><a href="{{ path('articleList') }}">
+                            <span class="material-icons">description</span>Articles
+                        </a>
+                    </li>
+                    <li><a href="{{ path('tagList')}}">
+                            <span class="material-icons">local_offer</span>Tags
+                        </a>
+                    </li>
+                    <li><a href="{{ path('Admin')}}">
+                            <span class="material-icons">settings</span>Admin
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </header>

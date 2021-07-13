@@ -3,24 +3,25 @@
 {% block title %}Liste des articles{% endblock title %}
 
 {% block main %}
-    <div class="list-items">
-        <h1 class="page-title">Liste des articles</h1>
-        <h2 class="subtitle">({{ articles | length }} article{{ articles | length > 1 ? 's' : '' }})</h2>
+    <div class="show">
+        <h1 class="page-title text-center">Liste des articles</h1>
+        <h2 class="subtitle my-10 text-center">({{ articles | length }} article{{ articles | length > 1 ? 's' : '' }})</h2>
         <div class="flex-container">
             {% for article in articles %}
                 {% if article.isPublished %}
                     <div class="card">
-                        <h1 class="title">{{ article.title }}</h1>
                         {% if article.category %}
-                            <h2 class="title">{{ article.category.title }}</h2>
+                            <h2 class="category">{{ article.category.title }}</h2>
                         {% endif %}
+                        <h1 class="title my-20">{{ article.title }}</h1>
+                        <p class="date my-10">Crée le {{ article.createdAt | date('j-m-y')}}</p>
+                        <p class="description my-10">{{ article.description }}</p>
                         {% if article.tag %}
-                            <a href="{{ path('tagShow', {id: article.tag.id}) }}" class="tag"
-                           style="border:2px solid {{ article.tag.color }}; color: {{ article.tag.color }};">{{ article.tag.title }}</a>
+                            <a href="{{ path('tagShow', {id: article.tag.id}) }}" class="tag my-10 mx-r-10"
+                               style="border:2px solid {{ article.tag.color }}; color: {{ article.tag.color }};">{{ article.tag.title }}</a>
                         {% endif %}
-                        <p class="description">{{ article.description }}</p>
                         <a href="{{ path('articleShow', {id: article.id}) }}">
-                            <div class="btn-more">En savoir plus</div>
+                            <div class="btn-more my-10">Voir l'article</div>
                         </a>
                     </div>
                 {% endif %}

@@ -1,6 +1,6 @@
 {% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}Admin Tags{% endblock title %}
+{% block title %}Administration | Tags{% endblock title %}
 
 {% block main %}
 <div class="show">
@@ -25,14 +25,14 @@
                         <tr>
                             <td>{{ tag.id }}</td>
                             <td>{{ tag.title }}</td>
-                            <td>{{ tag.color }}</td>
-                            <td>{{ tag.articles | length }} article{{ tag.articles | length > 1 ? 's' : '' }}</td>
+                            <td style="color: {{ tag.color }};">{{ tag.color }}</td>
+                            <td>{{ tag.articles | length }}</td>
                             <td>
                                 <a href="{{ path('AdminTagUpdate', {'id': tag.id }) }}">
-                                    <span class="material-icons">edit</span>
+                                    <span class="material-icons" id="edit-icon">edit</span>
                                 </a>
                                 <a href="{{ path('AdminTagDelete', {'id': tag.id }) }}">
-                                    <span class="material-icons">delete</span>
+                                    <span class="material-icons" id="delete-icon">delete</span>
                                 </a>
                             </td>
                         </tr>

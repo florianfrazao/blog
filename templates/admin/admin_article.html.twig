@@ -1,6 +1,6 @@
 {% extends 'admin/admin_base.html.twig' %}
 
-{% block title %}Accueil{% endblock title %}
+{% block title %}Administration | Articles{% endblock title %}
 
 {% block main %}
 <div class="show">
@@ -27,15 +27,15 @@
                         <tr>
                             <td>{{ article.id }}</td>
                             <td>{{ article.title }}</td>
-                            <td>{{ article.category.title }}</td>
+                            <td>{% if article.category %} {{ article.category.title }} {% endif %}</td>
                             <td>{{ article.createdAt | date('j-m-y')}}</td>
                             <td>{{ article.description }}</td>
                             <td>
                                 <a href="{{ path('AdminArticleUpdate', {'id': article.id }) }}">
-                                    <span class="material-icons">edit</span>
+                                    <span class="material-icons" id="edit-icon">edit</span>
                                 </a>
                                 <a href="{{ path('AdminArticleDelete', {'id': article.id }) }}">
-                                    <span class="material-icons">delete</span>
+                                    <span class="material-icons" id="delete-icon">delete</span>
                                 </a>
                             </td>
                         </tr>
