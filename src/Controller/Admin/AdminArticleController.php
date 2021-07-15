@@ -52,22 +52,31 @@ class AdminArticleController extends AbstractController
 
     public function updateArticle($id,
       ArticleRepository $articleRepository,
-      EntityManagerInterface $entityManager)
+      EntityManagerInterface $entityManager,
+      Request $request)
     {
-        // Récupération de l'article en fonction de son id defini dans la wildcard
+        // on récupère l'article en fonction de son id defini dans la wildcard
         $article = $articleRepository->find($id);
 
-        // Ajout de la nouvelle valeur a modifier
-        $article->setTitle('titre modifié');
+        // on génère le formulaire en utilisant le gabarit + une instance de l'entité Article
+        $articleForm = $this->createForm(ArticleType::class, $article);
 
-        // Pré-sauvegarde et envoi en bdd
-        $entityManager->persist($article);
-        $entityManager->flush();
+        // on lie le formulaire aux données de POST (aux données envoyées en POST)
+        $articleForm->handleRequest($request);
 
-        // Redirection vers la liste des articles
-        return $this->redirectToRoute('AdminArticleList');
+        // si le formulaire a été posté et qu'il est valide,
+        // on enregistre l'article créé en bdd
+        if ($articleForm->isSubmitted() && $articleForm->isValid()) {
+            $entityManager->persist($article);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('AdminArticleList');
+        }
+
+        return $this->render('admin/admin_article_edit.html.twig', [
+            'articleForm' => $articleForm->createView()
+        ]);
     }
-
 
     // SUPPRIMER UN ARTICLE
 

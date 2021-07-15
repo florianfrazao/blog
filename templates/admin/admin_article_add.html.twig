@@ -5,6 +5,33 @@
 {% block main %}
 <div class="show">
     <h1 class="page-title text-center">Ajout d'un nouvel article</h1>
-    {{ form(articleForm) }}
+
+    {# balise d'ouverture du formulaire #}
+    {{ form_start(articleForm, {'attr': {'class': 'admin-form'}}) }}
+
+    {# permet d afficher une row du formulaire (label + input) #}
+    {{ form_row(articleForm.title) }}
+    {{ form_row(articleForm.description) }}
+    {{ form_row(articleForm.content, {'attr': {'rows':'5', 'cols':'30'}}) }}
+    {{ form_row(articleForm.createdAt) }}
+    {{ form_row(articleForm.isPublished) }}
+    {{ form_widget(articleForm.submit) }}
+
+    {# permet d'afficher uniquement le label du champ #}
+    {# {{ form_label(articleForm.title) }} #}
+
+    {# permet d'afficher uniquement l'input du champ #}
+    {# {{ form_widget(articleForm.title) }} #}
+
+    {# permet de personnaliser les attributs CSS du label #}
+    {# {{ form_label(articleForm.title, 'Titre', {'label_attr': {'class': 'form_article_content_input'}}) }} #}
+
+    {# permet de personnaliser les attributs CSS de l'input #}
+    {# {{ form_widget(articleForm.title, {'attr': {'class': 'form-control', 'placeholder': 'Nom de l\'article'}}) }} #}
+
+    {# balise de fermeture du formulaire #}
+    {{ form_end(articleForm) }}
+
 </div>
+
 {% endblock main %}

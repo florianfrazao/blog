@@ -1,0 +1,10 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration | Modification d'un article{% endblock title %}
+
+{% block main %}
+<div class="show">
+    <h1 class="page-title text-center">Modification d'un article</h1>
+    {{ form(articleForm) }}
+</div>
+{% endblock main %}

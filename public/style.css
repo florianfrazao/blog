@@ -296,6 +296,89 @@ footer h3 {
     color:darkred;
 }
 
+.admin-form {
+    margin: 50px auto;
+    width: 30%;
+}
+
+.admin-form div {
+    margin: 20px 0;
+}
+
+.admin-form label {
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.admin-form input, .admin-form textarea {
+    width:100%;
+    border: 2px solid #dfdfdf;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+
+.admin-form textarea {
+    resize:none;
+
+}
+
+.admin-form #article_createdAt_date, .admin-form #article_createdAt_time {
+    display: inline;
+}
+
+.admin-form select {
+    border: 2px solid #dfdfdf;
+    padding: 5px 0;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.admin-form input[type="checkbox"] {
+    position: relative;
+    -webkit-appearance: none;
+    outline: none;
+    width: 50px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #D9DADC;
+    border-radius: 50px;
+    box-shadow: inset -20px 0 0 0 #fff;
+    cursor: pointer;
+}
+
+.admin-form input[type="checkbox"]:after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    background: transparent;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+}
+
+.admin-form input[type="checkbox"]:checked {
+    box-shadow: inset 20px 0 0 0 #4ed164;
+    border-color: #4ed164;
+}
+
+.admin-form input[type="checkbox"]:checked:after {
+    left: 20px;
+    box-shadow: -2px 4px 3px rgba(0,0,0,0.05);
+}
+
+.admin-form button[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    background: none;
+    border: 2px solid #dfdfdf;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 
 @media (max-width: 800px) {
