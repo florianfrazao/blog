@@ -17,79 +17,12 @@ a {
     color: white;
 }
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 10vh;
-    background: darkblue;
-}
-
-#logo-admin {
-    padding: 0 0 0 40px;
-}
-
-#logo-admin h1 a {
-    font-size: 1.2em;
-    font-family: 'Roboto Mono', monospace;
-}
-
-#logo-admin h1 a:hover {
-    text-decoration: none;
-}
-
-#logo {
-    padding: 0 0 0 40px;
-}
-
-#logo h1 a {
-    font-size: 1.2em;
-    font-family: 'Courgette', cursive;
-}
-
-#logo h1 a:hover {
-    text-decoration: none;
-}
-
-#search input[type='text'] {
-    border: none;
-    padding: 5px 10px;
-    font-style: italic;
-    margin: 0 10px 0 0;
-}
-
-#search input[type='submit']{
-    background: black;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-nav {
-    padding: 0 40px 0 0;
-}
-
-nav ul {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-nav ul li {
-    list-style: none;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    font-size: 1.3em;
-}
-
 a:hover{
     text-decoration: underline;
 }
+
+
+/* COMMON CLASSES */
 
 .text-center{
     text-align: center;
@@ -177,6 +110,82 @@ a:hover{
     flex-wrap: wrap;
 }
 
+
+/* HEADER */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    background: darkblue;
+}
+
+#logo-admin {
+    padding: 0 0 0 40px;
+}
+
+#logo-admin h1 a {
+    font-size: 1.2em;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#logo-admin h1 a:hover {
+    text-decoration: none;
+}
+
+#logo {
+    padding: 0 0 0 40px;
+}
+
+#logo h1 a {
+    font-size: 1.2em;
+    font-family: 'Courgette', cursive;
+}
+
+#logo h1 a:hover {
+    text-decoration: none;
+}
+
+#search input[type='text'] {
+    border: none;
+    padding: 5px 10px;
+    font-style: italic;
+    margin: 0 10px 0 0;
+}
+
+#search input[type='submit']{
+    background: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+nav {
+    padding: 0 40px 0 0;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    font-size: 1.3em;
+}
+
+
+/* BODY */
+
 .container {
     margin: 5%;
 }
@@ -239,6 +248,9 @@ a:hover{
     padding: 5px 10px;
 }
 
+
+/* FOOTER */
+
 footer {
     height: 10vh;
     background: darkblue;
@@ -250,6 +262,9 @@ footer {
 footer h3 {
     color: white;
 }
+
+
+/* ADMIN PAGES */
 
 .admin-array{
     width: 100%;
@@ -291,6 +306,8 @@ footer h3 {
     color:black;
 }
 
+/* FORMULAIRES */
+
 .admin-form {
     margin: 50px auto;
     width: 30%;
@@ -315,7 +332,6 @@ footer h3 {
 
 .admin-form textarea {
     resize:none;
-
 }
 
 .admin-form #article_createdAt_date, .admin-form #article_createdAt_time {
@@ -381,6 +397,19 @@ footer h3 {
     color: white;
 }
 
+.admin-form div ul {
+    list-style: none;
+}
+
+.admin-form div ul li {
+    color: red;
+    font-style: italic;
+    font-size: 0.9em;
+    margin:10px 0;
+}
+
+
+/* MEDIA QUERIES */
 
 @media (max-width: 800px) {
 
@@ -402,5 +431,4 @@ footer h3 {
     .tag {
         margin:20px 0;
     }
-
 }
