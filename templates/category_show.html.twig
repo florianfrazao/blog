@@ -3,7 +3,7 @@
 {% block title %} {{ category.title }} {% endblock title %}
 
 {% block main %}
-    <div class="show">
+    <div class="container">
         <h1 class="title text-center">{{ category.title }}</h1>
         <h2 class="subtitle my-10 text-center">({{ category.articles | length }} article{{ category.articles | length > 1 ? 's' : '' }})</h2>
         <div class="flex-container">

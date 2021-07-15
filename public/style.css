@@ -14,7 +14,7 @@
 a {
     text-decoration: none;
     font-weight: bold;
-    color: black;
+    color: white;
 }
 
 header {
@@ -22,7 +22,7 @@ header {
     align-items: center;
     justify-content: space-between;
     height: 10vh;
-    background: #AAAAAA;
+    background: darkblue;
 }
 
 #logo-admin {
@@ -85,7 +85,6 @@ nav ul li {
 
 nav ul li a {
     font-size: 1.3em;
-    color: black;
 }
 
 a:hover{
@@ -178,6 +177,10 @@ a:hover{
     flex-wrap: wrap;
 }
 
+.container {
+    margin: 5%;
+}
+
 .material-icons {
     vertical-align: bottom;
     padding-right:5px;
@@ -197,10 +200,6 @@ a:hover{
     padding: 40px;
     margin: 40px 0;
     border: 2px solid black;
-}
-
-.show {
-    margin: 5%;
 }
 
 .category {
@@ -242,7 +241,7 @@ a:hover{
 
 footer {
     height: 10vh;
-    background: black;
+    background: darkblue;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -277,7 +276,7 @@ footer h3 {
 
 .add-button{
     display: inline-block;
-    background:darkgreen;
+    background:#4ED164;
     padding: 5px 10px;
     border-radius: 10px;
     color: white;
@@ -288,12 +287,8 @@ footer h3 {
     color: white;
 }
 
-#edit-icon:hover{
-    color:darkorange;
-}
-
-#delete-icon:hover{
-    color:darkred;
+#edit-icon, #delete-icon{
+    color:black;
 }
 
 .admin-form {
@@ -314,7 +309,7 @@ footer h3 {
 .admin-form input, .admin-form textarea {
     width:100%;
     border: 2px solid #dfdfdf;
-    padding: 5px 0;
+    padding: 10px;
     border-radius: 5px;
 }
 
@@ -328,9 +323,9 @@ footer h3 {
 }
 
 .admin-form select {
+    width:100%;
     border: 2px solid #dfdfdf;
-    padding: 5px 0;
-    margin: 0 5px;
+    padding: 10px;
     border-radius: 5px;
 }
 
@@ -377,8 +372,14 @@ footer h3 {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1em;
 }
 
+.admin-form button[type="submit"]:hover {
+    background: #4ED164;
+    border: 2px solid #FFFFFF;
+    color: white;
+}
 
 
 @media (max-width: 800px) {

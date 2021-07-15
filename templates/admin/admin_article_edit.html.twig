@@ -3,8 +3,24 @@
 {% block title %}Administration | Modification d'un article{% endblock title %}
 
 {% block main %}
-<div class="show">
-    <h1 class="page-title text-center">Modification d'un article</h1>
-    {{ form(articleForm) }}
-</div>
+    <div class="container">
+        <h1 class="page-title text-center">Modification d'un article</h1>
+
+        {# balise d'ouverture du formulaire #}
+        {{ form_start(articleForm, {'attr': {'class': 'admin-form'}}) }}
+
+        {# permet d afficher une row du formulaire (label + input) #}
+        {{ form_row(articleForm.title) }}
+        {{ form_row(articleForm.description) }}
+        {{ form_row(articleForm.category) }}
+        {{ form_row(articleForm.tag) }}
+        {{ form_row(articleForm.content, {'attr': {'rows':'5', 'cols':'30'}}) }}
+        {{ form_row(articleForm.createdAt) }}
+        {{ form_row(articleForm.isPublished) }}
+        {{ form_widget(articleForm.submit) }}
+
+        {# balise de fermeture du formulaire #}
+        {{ form_end(articleForm) }}
+
+    </div>
 {% endblock main %}

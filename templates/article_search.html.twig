@@ -3,7 +3,7 @@
 {% block title %}Recherche{% endblock title %}
 
 {% block main %}
-    <div class="list-items">
+    <div class="container">
         <h1 class="page-title">Résultat : {{ articles | length }} article{{ articles | length > 1 ? 's' : '' }} correspondant à "{{ term }}"</h1>
         <div class="flex-container">
             {% for article in articles %}
