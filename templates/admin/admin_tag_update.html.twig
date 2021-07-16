@@ -1,0 +1,23 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration | Modification d'un tag{% endblock title %}
+
+{% block main %}
+
+<div class="container">
+    <h1 class="page-title text-center">Modification d'un tag</h1>
+
+    {# ouverture du formulaire #}
+    {{ form_start(tagForm, {'attr': {'class': 'admin-form'}}) }}
+
+    {# afficher une row du formulaire (label + input) #}
+    {{ form_row(tagForm.title) }}
+    {{ form_row(tagForm.colorCode) }}
+    {{ form_widget(tagForm.submit) }}
+
+    {# fermeture du formulaire #}
+    {{ form_end(tagForm) }}
+
+</div>
+
+{% endblock main %}

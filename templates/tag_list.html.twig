@@ -10,7 +10,7 @@
             <div class="tags">
                 {% for tag in tags %}
                     <a href="{{ path('tagShow', {id: tag.id}) }}" class="tag mx-r-10"
-                       style="border:2px solid {{ tag.color }}; color: {{ tag.color }};">{{ tag.title }}</a>
+                       style="border:2px solid {{ tag.colorCode }}; color: {{ tag.colorCode }};">{{ tag.title }}</a>
                 {% endfor %}
             </div>
         </div>

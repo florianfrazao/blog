@@ -90,7 +90,7 @@ class AdminCategoryController extends AbstractController
         }
 
         // création de la vue du formulaire
-        return $this->render('admin/admin_category_edit.html.twig', [
+        return $this->render('admin/admin_category_update.html.twig', [
         'categoryForm' => $categoryForm->createView()
         ]);
     }

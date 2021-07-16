@@ -3,9 +3,11 @@
 namespace App\Controller\admin;
 
 use App\Entity\Tag;
+use App\Form\TagType;
 use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminTagController extends AbstractController
@@ -19,25 +21,38 @@ class AdminTagController extends AbstractController
 
     public function addTag(
         EntityManagerInterface $entityManager,
-        TagRepository $tagRepository
+        Request $request
     )
     {
-        // On utilise l'entité tag, pour créer une nouvelle catégorie en bdd
+        // On utilise l'entité tag, pour créer un nouveau tag en bdd
         // Une instance de l'entité tag = un enregistrement de catégorie en bdd
         $tag = new tag();
 
-        // On utilise les setters de l'entité tag pour alimenter les valeurs des colonnes
-        $tag->setTitle('Nouveau Titre');
-        $tag->setColor('blue');
+        // on génère le formulaire en utilisant le gabarit + une instance de l'entité Tag
+        $tagForm = $this->createForm(TagType::class, $tag);
 
-        // On prend toutes les entitées qui ont été créées ici et on les "pré-sauvegarde"
-        $entityManager->persist($tag);
+        // on lie le formulaire aux données de POST (aux données envoyées en POST)
+        $tagForm->handleRequest($request);
 
-        // On récupère tout ce qui a été sauvegardé et on les insère en BDD
-        $entityManager->flush();
+        // si le formulaire a été posté et qu'il est valide,
+        // on enregistre l'article créé en bdd
+        if ($tagForm->isSubmitted() && $tagForm->isValid()) {
 
-        // On redirige vers la liste des articles
-        return $this->redirectToRoute('AdminTagList');
+            // On prend toutes les entitées qui ont été créées ici et on les "pré-sauvegarde"
+            $entityManager->persist($tag);
+
+            // On récupère tout ce qui a été sauvegardé et on les insère en BDD
+            $entityManager->flush();
+
+            // Redirection vers la liste des tags
+            return $this->redirectToRoute('AdminTagList');
+
+        }
+
+        // Création de la vue du formulaire
+        return $this->render('admin/admin_tag_add.html.twig', [
+            'tagForm' => $tagForm->createView()
+        ]);
     }
 
 
@@ -47,22 +62,39 @@ class AdminTagController extends AbstractController
      * @Route("/admin/tags/update/{id}" , name="AdminTagUpdate")
      */
 
-    public function updateTag($id,
-                                  tagRepository $tagRepository,
-                                  EntityManagerInterface $entityManager)
+    public function updateTag(
+        $id,
+        tagRepository $tagRepository,
+        EntityManagerInterface $entityManager,
+        Request $request
+    )
     {
         // Récupération de la catégorie en fonction de son id defini dans la wildcard
         $tag = $tagRepository->find($id);
 
-        // Ajout de la nouvelle valeur a modifier
-        $tag->setTitle('tag modifié');
+        // on génère le formulaire en utilisant le gabarit + une instance de l'entité Tag
+        $tagForm = $this->createForm(TagType::class, $tag);
 
-        // Pré-sauvegarde et envoi en bdd
-        $entityManager->persist($tag);
-        $entityManager->flush();
+        // on lie le formulaire aux données de POST (aux données envoyées en POST)
+        $tagForm->handleRequest($request);
 
-        // Redirection vers la liste des catégories
-        return $this->redirectToRoute('AdminTagList');
+        // si le formulaire a été posté et qu'il est valide,
+        // on enregistre l'article créé en bdd
+        if ($tagForm->isSubmitted() && $tagForm->isValid()) {
+
+            // Pré-sauvegarde et envoi en bdd
+            $entityManager->persist($tag);
+            $entityManager->flush();
+
+            // Redirection vers la liste des catégories
+            return $this->redirectToRoute('AdminTagList');
+
+        }
+
+        // Création de la vue du formulaire
+        return $this->render('admin/admin_tag_update.html.twig', [
+            'tagForm' => $tagForm->createView()
+        ]);
     }
 
 
@@ -72,9 +104,11 @@ class AdminTagController extends AbstractController
      * @Route("admin/tags/delete/{id}" , name="AdminTagDelete")
      */
 
-    public function deleteTag($id,
-                                  tagRepository $tagRepository,
-                                  EntityManagerInterface $entityManager)
+    public function deleteTag(
+        $id,
+        tagRepository $tagRepository,
+        EntityManagerInterface $entityManager
+    )
     {
         // Récupération de la catégorie en fonction de son id defini dans la wildcard
         $tag = $tagRepository->find($id);

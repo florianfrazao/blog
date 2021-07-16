@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TagRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TagRepository::class)
@@ -22,13 +23,15 @@ class Tag
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Merci de saisir un titre")
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Merci de saisir un code couleur")
      */
-    private $color;
+    private $colorCode;
 
 
     // Jointure avec la table articles en utilisant Doctrine
@@ -37,7 +40,6 @@ class Tag
      * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="tag")
      */
     private $articles;
-
 
 
     // Getters and Setters
@@ -59,17 +61,16 @@ class Tag
         return $this;
     }
 
-    public function getColor(): ?string
+    public function getColorCode()
     {
-        return $this->color;
+        return $this->colorCode;
     }
 
-    public function setColor(string $color): self
+    public function setColorCode($colorCode): void
     {
-        $this->color = $color;
-
-        return $this;
+        $this->colorCode = $colorCode;
     }
+
 
     public function getArticles()
     {

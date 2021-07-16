@@ -18,7 +18,7 @@
                         <p class="description my-10">{{ article.description }}</p>
                         {% if article.tag %}
                             <a href="{{ path('tagShow', {id: article.tag.id}) }}" class="tag my-10 mx-r-10"
-                               style="border:2px solid {{ article.tag.color }}; color: {{ article.tag.color }};">{{ article.tag.title }}</a>
+                               style="border:2px solid {{ article.tag.colorCode }}; color: {{ article.tag.colorCode }};">{{ article.tag.title }}</a>
                         {% endif %}
                         <a href="{{ path('articleShow', {id: article.id}) }}">
                             <div class="btn-more my-10">Voir l'article</div>

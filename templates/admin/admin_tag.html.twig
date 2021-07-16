@@ -15,7 +15,7 @@
             <tr>
                 <th>ID</th>
                 <th>Titre</th>
-                <th>Couleur</th>
+                <th>Code couleur</th>
                 <th>Nombre d'articles</th>
                 <th>Actions</th>
             </tr>
@@ -25,7 +25,7 @@
                         <tr>
                             <td>{{ tag.id }}</td>
                             <td>{{ tag.title }}</td>
-                            <td style="color: {{ tag.color }};">{{ tag.color }}</td>
+                            <td style="color: {{ tag.colorCode }};">{{ tag.colorCode }}</td>
                             <td>{{ tag.articles | length }}</td>
                             <td>
                                 <a href="{{ path('AdminTagUpdate', {'id': tag.id }) }}">

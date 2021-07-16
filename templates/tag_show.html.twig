@@ -4,7 +4,7 @@
 
 {% block main %}
     <div class="container">
-        <h1 class="page-title text-center">Liste des articles avec le tag <span style="color:{{ tag.color }}">"{{ tag.title }}"</h1>
+        <h1 class="page-title text-center">Liste des articles avec le tag <span style="color:{{ tag.colorCode }}">"{{ tag.title }}"</span></h1>
         <h2 class="subtitle my-10 text-center">({{ tag.articles | length }} article{{ tag.articles | length > 1 ? 's' : '' }})</h2>
         <div class="flex-container">
             {% for article in tag.articles %}
