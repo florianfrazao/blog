@@ -38,6 +38,7 @@ class AdminArticleController extends AbstractController
             return $this->redirectToRoute('AdminArticleList');
         }
 
+        // création de la vue du formulaire
         return $this->render('admin/admin_article_add.html.twig', [
             'articleForm' => $articleForm->createView()
         ]);
@@ -50,10 +51,12 @@ class AdminArticleController extends AbstractController
      * @Route("/admin/articles/update/{id}" , name="AdminArticleUpdate")
      */
 
-    public function updateArticle($id,
-      ArticleRepository $articleRepository,
-      EntityManagerInterface $entityManager,
-      Request $request)
+    public function updateArticle(
+        $id,
+        ArticleRepository $articleRepository,
+        EntityManagerInterface $entityManager,
+        Request $request
+    )
     {
         // on récupère l'article en fonction de son id defini dans la wildcard
         $article = $articleRepository->find($id);

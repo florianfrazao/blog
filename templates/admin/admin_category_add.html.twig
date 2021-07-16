@@ -1,0 +1,24 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Administration | Ajout d'une catégorie{% endblock title %}
+
+{% block main %}
+
+<div class="container">
+    <h1 class="page-title text-center">Ajout d'une nouvelle catégorie</h1>
+
+    {# ouverture du formulaire #}
+    {{ form_start(categoryForm, {'attr': {'class': 'admin-form'}}) }}
+
+    {# afficher une row du formulaire (label + input) #}
+    {{ form_row(categoryForm.title) }}
+    {{ form_row(categoryForm.description) }}
+    {{ form_row(categoryForm.isPublished) }}
+    {{ form_widget(categoryForm.submit) }}
+
+    {# fermeture du formulaire #}
+    {{ form_end(categoryForm) }}
+
+</div>
+
+{% endblock main %}

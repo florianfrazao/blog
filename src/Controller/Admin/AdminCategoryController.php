@@ -3,9 +3,11 @@
 namespace App\Controller\admin;
 
 use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminCategoryController extends AbstractController
@@ -19,26 +21,37 @@ class AdminCategoryController extends AbstractController
 
     public function addCategory(
         EntityManagerInterface $entityManager,
-        CategoryRepository $categoryRepository
+        Request $request
     )
     {
         // On utilise l'entité Category, pour créer une nouvelle catégorie en bdd
         // Une instance de l'entité Category = un enregistrement de catégorie en bdd
         $category = new Category();
 
-        // On utilise les setters de l'entité Category pour alimenter les valeurs des colonnes
-        $category->setTitle('Nouveau Titre');
-        $category->setDescription('Nouvelle description');
-        $category->setIsPublished(true);
+        // on génère le formulaire en utilisant le gabarit + une instance de l'entité Category
+        $categoryForm = $this->createForm(CategoryType::class, $category);
 
-        // On prend toutes les entitées qui ont été créées ici et on les "pré-sauvegarde"
-        $entityManager->persist($category);
+        // on lie le formulaire aux données de POST (aux données envoyées en POST)
+        $categoryForm->handleRequest($request);
 
-        // On récupère tout ce qui a été sauvegardé et on les insère en BDD
-        $entityManager->flush();
+        // si le formulaire a été posté et qu'il est valide,
+        // on enregistre l'article créé en bdd
+        if ($categoryForm->isSubmitted() && $categoryForm->isValid()) {
 
-        // On redirige vers la liste des articles
-        return $this->redirectToRoute('AdminCategoryList');
+            // On prend toutes les entitées qui ont été créées ici et on les "pré-sauvegarde"
+            $entityManager->persist($category);
+
+            // On récupère tout ce qui a été sauvegardé et on les insère en BDD
+            $entityManager->flush();
+
+            // Redirection vers la liste des catégories
+            return $this->redirectToRoute('AdminCategoryList');
+        }
+
+        // Création de la vue du formulaire
+        return $this->render('admin/admin_category_add.html.twig', [
+            'categoryForm' => $categoryForm->createView()
+        ]);
     }
 
 
@@ -48,22 +61,38 @@ class AdminCategoryController extends AbstractController
      * @Route("/admin/categories/update/{id}" , name="AdminCategoryUpdate")
      */
 
-    public function updateCategory($id,
-                                  CategoryRepository $categoryRepository,
-                                  EntityManagerInterface $entityManager)
+    public function updateCategory(
+        $id,
+        CategoryRepository $categoryRepository,
+        EntityManagerInterface $entityManager,
+        Request $request
+    )
     {
         // Récupération de la catégorie en fonction de son id defini dans la wildcard
         $category = $categoryRepository->find($id);
 
-        // Ajout de la nouvelle valeur a modifier
-        $category->setTitle('titre modifié');
+        // on génère le formulaire en utilisant le gabarit + une instance de l'entité Article
+        $categoryForm = $this->createForm(CategoryType::class, $category);
 
-        // Pré-sauvegarde et envoi en bdd
-        $entityManager->persist($category);
-        $entityManager->flush();
+        // on lie le formulaire aux données de POST (aux données envoyées en POST)
+        $categoryForm->handleRequest($request);
 
-        // Redirection vers la liste des catégories
-        return $this->redirectToRoute('AdminCategoryList');
+        // si le formulaire a été posté et qu'il est valide,
+        // on enregistre l'article créé en bdd
+        if ($categoryForm->isSubmitted() && $categoryForm->isValid()) {
+
+            // Pré-sauvegarde et envoi en bdd
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+            // Redirection vers la liste des catégories
+            return $this->redirectToRoute('AdminCategoryList');
+        }
+
+        // création de la vue du formulaire
+        return $this->render('admin/admin_category_edit.html.twig', [
+        'categoryForm' => $categoryForm->createView()
+        ]);
     }
 
 

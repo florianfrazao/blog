@@ -20,7 +20,7 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre' // change le nom du sslabel
+                'label' => 'Titre' // change le nom du label
             ])
 
             ->add('description', TextType::class, [
@@ -29,7 +29,7 @@ class ArticleType extends AbstractType
 
             ->add('category', EntityType::class, [
                 'label' => 'Catégorie',
-                'class' => Category::class,
+                'class' => Category::class, // fait la jonction avec la table Catégorie
                 'choice_label' => 'title'
             ])
 

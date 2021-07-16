@@ -35,8 +35,8 @@ class Article
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Merci de saisir une description")
      * @Assert\Length(
-     *     min=20,
-     *     minMessage="Merci de renseigner une description de plus de 20 caractères",
+     *     min=10,
+     *     minMessage="Merci de renseigner une description de plus de 10 caractères",
      * )
      */
     private $description;
