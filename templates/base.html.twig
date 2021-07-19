@@ -7,7 +7,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-        <header>
+        <header id="header">
             <div id="logo">
                 <h1><a href="{{ path('home') }}">Mon super blog</a></h1>
             </div>
@@ -30,7 +30,7 @@
                         </a>
                     </li>
                     <li><a href="{{ path('Admin')}}">
-                            <span class="material-icons">settings</span>Admin
+                            <span class="material-icons">admin_panel_settings</span>Administration
                         </a>
                     </li>
                 </ul>
@@ -39,7 +39,7 @@
         <main>
             {% block main %}{% endblock %}
         </main>
-        <footer>
+        <footer id="footer">
             <h3>Crée avec Symfony par Florian Frazao</h3>
         </footer>
     </body>

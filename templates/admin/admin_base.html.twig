@@ -8,10 +8,12 @@
 
 </head>
 <body>
-<header>
+<header id="header-admin">
   <div id="logo-admin">
     <h1><a href="{{ path('Admin') }}">Administration</a></h1>
   </div>
+
+  {% if is_granted('ROLE_ADMIN') %}
   <nav>
     <ul>
       <li>
@@ -30,18 +32,41 @@
         </a>
       </li>
       <li>
-        <a href="{{ path('home')}}">
-          <span class="material-icons">home</span>Blog
+        <a href="{{ path('logout')}}">
+          <span class="material-icons">logout</span>Déconnexion
         </a>
       </li>
     </ul>
   </nav>
+  {% endif %}
 </header>
+
+<!-- Messages d'erreur -->
+{% for message in app.flashes('success') %}
+  <div class="flash-success">
+      <span class="material-icons">check_circle</span>{{ message }}
+  </div>
+{% endfor %}
+{% for message in app.flashes('warning') %}
+  <div class="flash-warning">
+    <span class="material-icons">error</span>{{ message }}
+  </div>
+{% endfor %}
+{% if error is defined and error %}
+  <div class="flash-warning">
+    <span class="material-icons">error</span>{{ error.messageKey }}
+  </div>
+{% endif %}
+
 <main>
   {% block main %}{% endblock %}
 </main>
-<footer>
+
+{% if is_granted('ROLE_ADMIN') %}
+<footer id="footer-admin">
   <h3>Crée avec Symfony par Florian Frazao</h3>
 </footer>
+{% endif %}
+
 </body>
 </html>

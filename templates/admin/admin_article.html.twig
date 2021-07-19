@@ -4,13 +4,13 @@
 
 {% block main %}
 <div class="container">
-    <h1 class="page-title text-center">Administration des articles</h1>
+    <h1 class="page-title text-center">Liste des articles</h1>
     <h2 class="subtitle my-10 text-center">({{ articles | length }} article{{ articles | length > 1 ? 's' : '' }})</h2>
-    <div class="add-button my-10">
+    <div id="add-article" class="add-button my-10">
         <span class="material-icons">add_circle</span>
         <a href="{{ path('AdminArticleAdd')}}">Ajouter un article</a>
     </div>
-        <table id="article-array" class="admin-array my-20" cellspacing="0">
+        <table id="admin-article-array" class="admin-array my-20 w-100" cellspacing="0">
             <thead>
             <tr>
                 <th>ID</th>

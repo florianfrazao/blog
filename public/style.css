@@ -24,8 +24,16 @@ a:hover{
 
 /* COMMON CLASSES */
 
+.text-left{
+    text-align: left;
+}
+
 .text-center{
     text-align: center;
+}
+
+.text-right{
+    text-align: right;
 }
 
 .m-10 {
@@ -110,15 +118,44 @@ a:hover{
     flex-wrap: wrap;
 }
 
+.w-auto {
+    width: auto;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+
+
 
 /* HEADER */
 
-header {
+#header, #header-admin {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 10vh;
+}
+
+#header{
     background: darkblue;
+}
+
+#header-admin{
+    background: black;
 }
 
 #logo-admin {
@@ -251,33 +288,35 @@ nav ul li a {
 
 /* FOOTER */
 
-footer {
+#footer, #footer-admin {
     height: 10vh;
-    background: darkblue;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-footer h3 {
+#footer{
+    background: darkblue;
+}
+
+#footer-admin{
+    background: black;
+}
+
+#footer h3, #footer-admin h3 {
     color: white;
 }
 
 
 /* ADMIN PAGES */
 
-.admin-array{
-    width: 100%;
-}
-
 .admin-array th {
-    background: black;
-    color:white;
     padding: 15px;
+    color:white;
 }
 
 .admin-array td {
-    padding: 15px 5px;
+    padding: 15px;
     text-align: center;
 }
 
@@ -287,6 +326,18 @@ footer h3 {
 
 .admin-array tr:nth-child(even){
     background:#C4C4C4;
+}
+
+#admin-article-array th, #add-article {
+    background: #5eb5e0;
+}
+
+#admin-category-array th, #add-category {
+    background: #4ED164;
+}
+
+#admin-tag-array th, #add-tag {
+    background: lightcoral;
 }
 
 .add-button{
@@ -319,7 +370,7 @@ footer h3 {
 
 .admin-form label {
     display: block;
-    margin: 10px 0;
+    margin: 15px 0 5px 0;
     text-align: left;
 }
 
@@ -417,6 +468,21 @@ footer h3 {
     margin:10px 0;
 }
 
+.flash-success{
+    text-align: center;
+    background: #4ED164;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 0;
+}
+
+.flash-warning{
+    text-align: center;
+    background: #ff3f3f;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px 0;
+}
 
 /* MEDIA QUERIES */
 

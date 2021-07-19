@@ -3,7 +3,120 @@
 {% block title %}Accueil admin{% endblock title %}
 
 {% block main %}
-    <div class="container">
-        <h1 class="page-title text-center">Bienvenue sur l'administration du blog !</h1>
+<div class="container">
+    <h1 class="page-title text-center my-20">Bienvenue {{ app.user.firstname }}</h1>
+    <ul class="my-20">
+        <li id="add-article" class="add-button my-10 mx-r-10">
+            <span class="material-icons">add_circle</span>
+            <a href="{{ path('AdminArticleAdd')}}">Article</a>
+        </li>
+
+        <li id="add-category" class="add-button my-10 mx-r-10">
+        <span class="material-icons">add_circle</span>
+        <a href="{{ path('AdminCategoryAdd') }}">Catégorie</a>
+        </li>
+
+        <li id="add-tag" class="add-button my-10 mx-r-10">
+        <span class="material-icons">add_circle</span>
+        <a href="{{ path('AdminTagAdd') }}">Tag</a>
+        </li>
+    </ul>
+
+    <div class="flex-between">
+        <div>
+            <h1 class="subtitle my-20">Derniers articles</h1>
+            <table id="admin-article-array" class="admin-array my-20 w-auto" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Titre</th>
+                    <th>Catégorie</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    {% if article.isPublished %}
+                        <tr>
+                            <td>{{ article.createdAt | date('j-m-y')}}</td>
+                            <td>{{ article.title }}</td>
+                            <td>{% if article.category %} {{ article.category.title }} {% endif %}</td>
+                            <td>
+                                <a href="{{ path('AdminArticleUpdate', {'id': article.id }) }}">
+                                    <span class="material-icons" id="edit-icon">edit</span>
+                                </a>
+                                <a href="{{ path('AdminArticleDelete', {'id': article.id }) }}">
+                                    <span class="material-icons" id="delete-icon">delete</span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h1 class="subtitle my-20">Dernières catégories</h1>
+            <table id="admin-category-array" class="admin-array my-20 w-auto" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Catégorie</th>
+                    <th>Nombre d'articles</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for category in categories %}
+                    {% if category.isPublished %}
+                        <tr>
+                            <td>{{ category.title }}</td>
+                            <td>{{ category.articles | length }}</td>
+                            <td>
+                                <a href="{{ path('AdminCategoryUpdate', {'id': category.id }) }}">
+                                    <span class="material-icons" id="edit-icon">edit</span>
+                                </a>
+                                <a href="{{ path('AdminCategoryDelete', {'id': category.id }) }}">
+                                    <span class="material-icons" id="delete-icon">delete</span>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <h1 class="subtitle my-20">Derniers tags</h1>
+            <table id="admin-tag-array" class="admin-array my-20 w-auto" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>Tag</th>
+                    <th>Code couleur</th>
+                    <th>Nombre d'articles</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tag in tags %}
+                        <tr>
+                            <td>{{ tag.title }}</td>
+                            <td style="color: {{ tag.colorCode }};">{{ tag.colorCode }}</td>
+                            <td>{{ tag.articles | length }}</td>
+                            <td>
+                                <a href="{{ path('AdminTagUpdate', {'id': tag.id }) }}">
+                                    <span class="material-icons" id="edit-icon">edit</span>
+                                </a>
+                                <a href="{{ path('AdminTagDelete', {'id': tag.id }) }}">
+                                    <span class="material-icons" id="delete-icon">delete</span>
+                                </a>
+                            </td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
 {% endblock main %}

@@ -1,0 +1,19 @@
+{% extends 'admin/admin_base.html.twig' %}
+
+{% block title %}Admin | Connexion{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <h1 class="page-title text-center">Connexion administrateur</h1>
+            <form method="post" class="admin-form">
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail"  autocomplete="email" required>
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" autocomplete="current-password" required>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div>
+                    <button type="submit">Connexion</button>
+                </div>
+            </form>
+    </div>
+{% endblock %}

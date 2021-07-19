@@ -29,13 +29,28 @@ class AdminArticleController extends AbstractController
         // on lie le formulaire aux données de POST (aux données envoyées en POST)
         $articleForm->handleRequest($request);
 
-        // si le formulaire a été posté et qu'il est valide,
-        // on enregistre l'article créé en bdd
+        // si le formulaire a été posté et qu'il est valide
         if ($articleForm->isSubmitted() && $articleForm->isValid()) {
+
+            // permet de stocker en session une notification, dans le but de l'afficher sur la page suivante
+            $this->addFlash(
+                'success',
+                'l\'article '. $article->getTitle().' a bien été créé !'
+            );
+
+            // on enregistre l'article créé en bdd et on le pousse
             $entityManager->persist($article);
             $entityManager->flush();
 
             return $this->redirectToRoute('AdminArticleList');
+        }
+
+        if ($articleForm->isSubmitted() && !($articleForm->isValid())) {
+            // si erreur, afficher un message d'erreur :
+            $this->addFlash(
+                'warning',
+                'Une erreur est survenue lors l\'ajout de l\'article'
+            );
         }
 
         // création de la vue du formulaire
@@ -67,13 +82,28 @@ class AdminArticleController extends AbstractController
         // on lie le formulaire aux données de POST (aux données envoyées en POST)
         $articleForm->handleRequest($request);
 
-        // si le formulaire a été posté et qu'il est valide,
-        // on enregistre l'article créé en bdd
+        // si le formulaire a été posté et qu'il est valide
         if ($articleForm->isSubmitted() && $articleForm->isValid()) {
+
+            // permet de stocker en session une notification, dans le but de l'afficher sur la page suivante
+            $this->addFlash(
+                'success',
+                'L\'article '. $article->getTitle().' a bien été modifié !'
+            );
+
+            // on enregistre l'article créé en bdd et on le pousse
             $entityManager->persist($article);
             $entityManager->flush();
 
             return $this->redirectToRoute('AdminArticleList');
+        }
+
+        if ($articleForm->isSubmitted() && !($articleForm->isValid())) {
+            // si erreur, afficher un message d'erreur :
+            $this->addFlash(
+                'warning',
+                'Une erreur est survenue lors de la modification de l\'article'
+            );
         }
 
         return $this->render('admin/admin_article_update.html.twig', [
@@ -99,6 +129,12 @@ class AdminArticleController extends AbstractController
 
         // Envoi en bdd
         $entityManager->flush();
+
+        // permet de stocker en session une notification, dans le but de l'afficher sur la page suivante
+        $this->addFlash(
+            'success',
+            'L\'article '. $article->getTitle().' a bien été supprimé !'
+        );
 
         // Rédirection vers la liste des articles
         return $this->redirectToRoute('AdminArticleList');
